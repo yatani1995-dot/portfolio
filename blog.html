@@ -1,0 +1,23 @@
+---
+layout: default
+tab: blog
+title: Blog
+---
+<section class="page-head">
+  <p class="eyebrow">Blog</p>
+  <h1>Blog</h1>
+  <p class="page-head__lead">作りながら気づいたこと・学んだことの記録です。</p>
+</section>
+
+<ul class="loglist">
+  {% for post in site.posts %}
+  <li class="loglist__item">
+    <a class="loglist__link sticker" href="{{ post.url | relative_url }}">
+      <span class="loglist__title">{{ post.title }}</span>
+      <span class="loglist__date">{{ post.date | date: "%Y.%m.%d" }}</span>
+    </a>
+  </li>
+  {% else %}
+  <li class="loglist__empty">まだ記事がありません。_posts/ にMarkdownファイルを追加すると、ここに一覧が表示されます。</li>
+  {% endfor %}
+</ul>

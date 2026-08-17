@@ -1,0 +1,26 @@
+title: "Your Name — Portfolio"
+short_title: "Potfolio"   # ナビ左上のロゴ表記（画像内の表記に合わせています）
+description: "Web制作とJavaアプリ開発の作品置き場 / ブログ"
+baseurl: ""            # ルート直下(username.github.io)で公開する場合は空のまま
+url: ""                 # 例: https://username.github.io
+author: "Your Name"
+
+# Jekyll標準のMarkdown変換エンジン
+markdown: kramdown
+
+# 記事のURL形式（/2026/08/16/hello-world/ のような形になる）
+permalink: /blog/:year/:month/:day/:title/
+
+# デフォルトレイアウトの割り当て
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# ローカルプレビュー時に無視するファイル
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

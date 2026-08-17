@@ -1,0 +1,11 @@
+<header class="navbar" role="banner">
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="{{ '/' | relative_url }}">{{ site.short_title }}</a>
+    <nav class="navbar__links" role="navigation" aria-label="メインナビゲーション">
+      <a class="navlink {% if page.tab == 'home' %}is-active{% endif %}" href="{{ '/' | relative_url }}">home</a>
+      <a class="navlink {% if page.tab == 'works' %}is-active{% endif %}" href="{{ '/works.html' | relative_url }}">works</a>
+      <a class="navlink {% if page.tab == 'blog' %}is-active{% endif %}" href="{{ '/blog.html' | relative_url }}">blog</a>
+      <a class="navlink {% if page.tab == 'contact' %}is-active{% endif %}" href="{{ '/contact.html' | relative_url }}">contact</a>
+    </nav>
+  </div>
+</header>
