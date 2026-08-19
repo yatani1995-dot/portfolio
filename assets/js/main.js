@@ -47,12 +47,14 @@
 //      back  → photo-4
 // ------------------------------------------------------------
 (function photoSlideshow() {
-  const frontImg = document.getElementById("slideshow-img");
-  const backImg = document.getElementById("slideshow-img-back");
+  const frames = document.querySelectorAll(".photo-frame");
+  if (frames.length < 2) return;
 
-  if (!frontImg || !backImg) return;
+  const frameA = frames[0];
+  const frameB = frames[1];
+  const imgA = frameA.querySelector("img");
+  const imgB = frameB.querySelector("img");
 
-  // portfolio-img/ に写真を追加したら、ここにファイル名を追記してください。
   const photos = [
     "portfolio-img/photo-1.jpeg",
     "portfolio-img/photo-2.jpeg",
@@ -62,104 +64,43 @@
 
   if (photos.length < 2) return;
 
-  const intervalMs = 3000; // 3秒ごとに切り替え
-  const fadeMs = 600;      // フェード時間
+  const intervalMs = 4000;
+  let nextPhotoIndex = 2;
 
-  // 現在表示している画像の番号
-  let frontIndex = 0;
-  let backIndex = 1;
+  frameA.classList.add("is-front");
+  frameB.classList.add("is-back");
+  imgA.src = photos[0];
+  imgB.src = photos[1];
 
-  // ----------------------------------------------------------
-  // 画像を読み込む
-  // ----------------------------------------------------------
-  function loadImage(src) {
-    return new Promise((resolve, reject) => {
-      const image = new Image();
+  Object.assign(frameA, { isFront: true, imgElement: imgA });
+  Object.assign(frameB, { isFront: false, imgElement: imgB });
 
-      image.onload = () => resolve(src);
-      image.onerror = () => reject(src);
+  setInterval(() => {
+    const currentFront = frameA.isFront ? frameA : frameB;
+    const currentBack = frameA.isFront ? frameB : frameA;
 
-      image.src = src;
-    });
-  }
+    // 1. 左へ飛ばすアニメーションを開始
+    currentFront.classList.add("is-switching");
 
-  // ----------------------------------------------------------
-  // すべての画像を事前読み込み
-  // ----------------------------------------------------------
-  async function preloadImages() {
-    try {
-      await Promise.all(
-        photos.map((src) => loadImage(src))
-      );
+    currentBack.classList.remove("is-back");
+    currentBack.classList.add("is-front");
 
-      startSlideshow();
+    // 【変更点】アニメーションの中間（左に最も離れた300ms時点）で画像を切り替える
+    setTimeout(() => {
+      currentFront.imgElement.src = photos[nextPhotoIndex];
+      nextPhotoIndex = (nextPhotoIndex + 1) % photos.length;
+    }, 300); // 0.3秒後に画像を変更
 
-    } catch (error) {
-      console.error("画像の読み込みに失敗しました:", error);
-    }
-  }
+    // 2. アニメーション全体（0.6秒）が終わったらクラスと状態の整理だけを行う
+    setTimeout(() => {
+      currentFront.classList.remove("is-switching");
+      currentFront.classList.remove("is-front");
+      currentFront.classList.add("is-back");
 
-  // ----------------------------------------------------------
-  // スライドショー開始
-  // ----------------------------------------------------------
-  function startSlideshow() {
+      currentFront.isFront = false;
+      currentBack.isFront = true;
 
-    // 初期状態
-    frontImg.src = photos[frontIndex];
-    backImg.src = photos[backIndex];
+    }, 600); // 0.6秒後に位置をリセット
 
-    frontImg.style.opacity = "1";
-    backImg.style.opacity = "1";
-
-    frontImg.style.transition = `opacity ${fadeMs}ms ease`;
-    backImg.style.transition = `opacity ${fadeMs}ms ease`;
-
-    setInterval(() => {
-
-      // 次に表示する画像
-      const nextFrontIndex =
-        (frontIndex + 1) % photos.length;
-
-      const nextBackIndex =
-        (backIndex + 1) % photos.length;
-
-      // --------------------------------------------------------
-      // 次の画像をあらかじめ読み込んでから切り替える
-      // --------------------------------------------------------
-      const nextFrontSrc = photos[nextFrontIndex];
-      const nextBackSrc = photos[nextBackIndex];
-
-      Promise.all([
-        loadImage(nextFrontSrc),
-        loadImage(nextBackSrc)
-      ]).then(() => {
-
-        // 一度透明にする
-        frontImg.style.opacity = "0";
-        backImg.style.opacity = "0";
-
-        setTimeout(() => {
-
-          // 画像を次の画像へ変更
-          frontImg.src = nextFrontSrc;
-          backImg.src = nextBackSrc;
-
-          // 再び表示
-          frontImg.style.opacity = "1";
-          backImg.style.opacity = "1";
-
-        }, fadeMs);
-
-        // 現在位置を更新
-        frontIndex = nextFrontIndex;
-        backIndex = nextBackIndex;
-
-      });
-
-    }, intervalMs);
-  }
-
-  // 最初の画像を確実に読み込んでから開始
-  preloadImages();
-
+  }, intervalMs);
 })();
