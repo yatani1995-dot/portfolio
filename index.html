@@ -16,92 +16,93 @@
         <a class="navbar__logo" href="#">Potfolio</a>
         <nav class="navbar__links" role="navigation" aria-label="メインナビゲーション">
             <a class="navlink is-active" href="#">home</a>
-            <a class="navlink" href="#">works</a>
-            <a class="navlink" href="#">blog</a>
-            <a class="navlink" href="#">contact</a>
+            <a class="navlink" href="works.html">works</a>
+            <a class="navlink" href="blog.html">blog</a>
+            <a class="navlink" href="contact.html">contact</a>
         </nav>
     </div>
     </header>
 
     <main id="main" class="site-main" role="main">
         <section class="hero">
-            <div class="photo-stack" aria-hidden="true">
-                <div class="photo-frame photo-frame--back sticker">
-                    <img id="slideshow-img-back" src="{{ '/portfolio-img/photo-2.jpeg' | relative_url }}"alt="">
-                </div>
-                <div class="photo-frame photo-frame--front sticker">
-                    <img id="slideshow-img" src="{{ '/portfolio-img/photo-1.jpeg' | relative_url }}"alt="">
-                </div>
+    <div class="photo-stack" aria-hidden="true">
+        <div class="photo-frame photo-frame--back sticker">
+            <img id="slideshow-img-back" src="{{ '/portfolio-img/photo-2.jpeg' | relative_url }}" alt="">
+        </div>
+        <div class="photo-frame photo-frame--front sticker">
+            <img id="slideshow-img" src="{{ '/portfolio-img/photo-1.jpeg' | relative_url }}" alt="">
+        </div>
+    </div>
+
+    <div class="hero__text">
+        <h1>ポートフォリオへようこそ</h1>
+        <p class="hero__lead">
+            初めまして「やたに」です。<br>
+            学習過程や成果物はもちろん、<br>
+            私自身のことも知ることができる場所を<br>
+            作成してみました。
+        </p>
+        <div class="hero__actions">
+            <a class="btn btn--primary sticker" href="{{ '/works.html' | relative_url }}">作品はこちら</a>
+            <a class="btn btn--outline sticker" href="{{ '/blog.html' | relative_url }}">制作過程はこちら</a>
+        </div>
+    </div>
+</section>
+
+<section class="intro">
+    <h2 class="section-title">自己紹介</h2>
+    <p class="hero__lead">「やたに」です。1995年11月8日生まれのO型です。</p>
+    <p>根っからのインドア派ですが誘われたらお出かけも苦じゃないです！</p>
+    <p>考えることが好きで謎解きが趣味です。</p>
+    <p>何かを作ったり試行錯誤を繰り返すのが好きなのでWebデザインや</p>
+    <p>開発の分野に携わりたいと思い奮闘中です！</p>
+</section>
+
+<section class="skills">
+    <h2 class="section-title">スキル</h2>
+    <ul class="skills__list">
+        <li class="skills__row"><span class="skills__label">HTML/CSS</span><span class="skills__desc">レイアウト・レスポンシブ対応ができます。</span></li>
+        <li class="skills__row"><span class="skills__label">JavaScript</span><span class="skills__desc">現在学習中。実装で慣らし中です。</span></li>
+        <li class="skills__row"><span class="skills__label">Java</span><span class="skills__desc">電卓アプリなどの基礎的なアプリ開発ができます。</span></li>
+    </ul>
+</section>
+
+<section id="works">
+    <h2 class="section-title">作品</h2>
+    <section class="works-preview grid">
+        <article class="card sticker" data-lang="java">
+            <h3 class="card__title">電卓アプリ</h3>
+            <p class="card__desc">四則演算に対応した簡易的な電卓です。Javaで最初に作成した実践的なアプリです。</p>
+            <div class="card__links">
+                <a href="#" class="btn btn--primary btn--sm sticker">デモを見る</a>
+                <a href="https://github.com/yatani1995-dot/CalculatorApp.git" class="btn btn--outline btn--sm sticker">GitHub</a>
             </div>
-
-            <div class="hero__text">
-                <h1>ポートフォリオへようこそ</h1>
-                <p class="hero__lead">
-                    初めまして「やたに」です。<br>
-                    学習過程や成果物はもちろん、<br>
-                    私自身のことも知ることができる場所を<br>
-                    作成してみました。
-                </p>
-                <div class="hero__actions">
-                    <a class="btn btn--primary sticker" href="{{ '/works.html' | relative_url }}">作品はこちら</a>
-                    <a class="btn btn--outline sticker" href="{{ '/blog.html' | relative_url }}">制作過程はこちら</a>
-                </div>
+        </article>
+        <article class="card sticker" data-lang="html">
+            <h3 class="card__title">cafeサイト</h3>
+            <p class="card__desc">HTML/CSSで構築した1ページ完結のサイトです。レスポンシブ対応もしています。</p>
+            <div class="card__links">
+                <a href="#" class="btn btn--primary btn--sm sticker">デモを見る</a>
+                <a href="https://github.com/yatani1995-dot/cafe-site.git" class="btn btn--outline btn--sm sticker">GitHub</a>
             </div>
-        </section>
-
-        <section class="intro">
-            <h2 class="section-title">自己紹介</h2>
-            <p class="hero__lead">「やたに」です。1995年11月8日生まれのO型です。</p>
-            <p>根っからのインドア派ですが誘われたらお出かけも苦じゃないです！</p>
-            <p>考えることが好きで謎解きが趣味です。</p>
-            <p>何かを作ったり試行錯誤を繰り返すのが好きなのでWebデザインや</p>
-            <p>開発の分野に携わりたいと思い奮闘中です！</p>
-        </section>
-
-        <section class="skills">
-            <h2 class="section-title">スキル</h2>
-                <ul class="skills__list">
-                <li class="skills__row"><span class="skills__label">HTML/CSS</span><span class="skills__desc">レイアウト・レスポンシブ対応ができます。</span></li>
-                <li class="skills__row"><span class="skills__label">JavaScript</span><span class="skills__desc">現在学習中。実装で慣らし中です。</span></li>
-                <li class="skills__row"><span class="skills__label">Java</span><span class="skills__desc">電卓アプリなどの基礎的なアプリ開発ができます。</span></li>
-            </ul>
-        </section>
-
-        <section id = "works">
-            <h2 class="section-title">作品</h2>
-            <section class="works-preview grid">
-                <article class="card sticker" data-lang="java">
-                    <h3 class="card__title">電卓アプリ</h3>
-                    <p class="card__desc">四則演算に対応した簡易的な電卓です。Javaで最初に作成した実践的なアプリです。</p>
-                    <div class="card__links">
-                        <a href="#" class="btn btn--primary btn--sm sticker">デモを見る</a>
-                        <a href="https://github.com/yatani1995-dot/CalculatorApp.git" class="btn btn--outline btn--sm sticker">GitHub</a>
-                    </div>
-                </article>
-                <article class="card sticker" data-lang="java">
-                    <h3 class="card__title">cafeサイト</h3>
-                    <p class="card__desc">HTML/CSSで構築した1ページ完結のサイトです。レスポンシブ対応もしています。</p>
-                    <div class="card__links">
-                        <a href="#" class="btn btn--primary btn--sm sticker">デモを見る</a>
-                        <a href="https://github.com/yatani1995-dot/cafe-site.git" class="btn btn--outline btn--sm sticker">GitHub</a>
-                    </div>
-                </article>
-                <article class="card sticker" data-lang="java">
-                    <h3 class="card__title">このサイト</h3>
-                    <p class="card__desc">今見ているこのサイトも作品の一つです。HTML/CSS/JSとJekyllで構築しています。</p>
-                    <div class="card__links">
-                        <a href="#" class="btn btn--primary btn--sm sticker">デモを見る</a>
-                        <a href="https://github.com/yatani1995-dot/portfolio.git" class="btn btn--outline btn--sm sticker">GitHub</a>
-                    </div>
-                </article>
-            </section>
-            <div class="works-preview__more">
-                <a class="btn btn--primary sticker" href="#">他の作品はこちら</a>
+        </article>
+        <article class="card sticker" data-lang="html">
+            <h3 class="card__title">このサイト</h3>
+            <p class="card__desc">今見ているこのサイトも作品の一つです。HTML/CSS/JSとJekyllで構築しています。</p>
+            <div class="card__links">
+                <a href="#" class="btn btn--primary btn--sm sticker">デモを見る</a>
+                <a href="https://github.com/yatani1995-dot/portfolio.git" class="btn btn--outline btn--sm sticker">GitHub</a>
             </div>
-        </section>
+        </article>
+    </section>
+    <div class="works-preview__more">
+        <a class="btn btn--primary sticker" href="{{ '/works.html' | relative_url }}">他の作品はこちら</a>
+    </div>
+</section>
     </main>
     
     <footer class="site-footer"><p>&copy; 2026 yatani.portfolio</p></footer>
 
 </body>
 </html>
+
