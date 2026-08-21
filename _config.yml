@@ -1,7 +1,7 @@
 title: "Your Name — Portfolio"
 short_title: "Potfolio"   # ナビ左上のロゴ表記（画像内の表記に合わせています）
 description: "Web制作とJavaアプリ開発の作品置き場 / ブログ"
-baseurl: "/portfolio"   # プロジェクトページ(https://yatani1995-dot.github.io/portfolio/)で公開しているため設定
+baseurl: ""  # プロジェクトページ(https://yatani1995-dot.github.io/portfolio/)で公開しているため設定
 url: "https://yatani1995-dot.github.io"
 author: "Your Name"
 
